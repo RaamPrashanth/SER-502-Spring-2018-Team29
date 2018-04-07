@@ -1,1 +1,43 @@
 SER 502 Contribution - Team 29 
+
+Members -
+1. Hari Siddarth Velaudampalayam Kesavan
+2. Mohan Vasantrao Yadav
+3. Pratik Suryawanshi
+4. RaamPrashanth Namakkal Sudhakar
+
+Week 1 (Mar 23-30)
+1. Hari Siddarth Velaudampalayam Kesavan
+      - Exploring and familiarizing with git 
+      - Learning prerequisites for compiler design
+2. Mohan Vasantrao Yadav
+      - Exploring and familiarizing with git 
+      - Learning prerequisites for compiler design
+3. Pratik Suryawanshi
+      - Setting up project in git
+      - Learning prerequisites for compiler design
+4. RaamPrashanth Namakkal Sudhakar
+      - Setting up project in git
+      - Learning prerequisites for compiler design
+      
+Week 2 (Mar 31 - Apr 6)
+1. Hari Siddarth Velaudampalayam Kesavan
+    - Discussed and implemented grammar
+    - Studied and explored about compiler implementation process and provided design
+2. Mohan Vasantrao Yadav
+    - Discussed and implemented grammar
+    - Wrote sample programs
+    - verified sample programs with the grammar
+3. Pratik Suryawanshi
+    - Discussed and implemented grammar
+    - Wrote sample programs
+    - verified sample programs with the grammar
+4. RaamPrashanth Namakkal Sudhakar
+    - Discussed and implemented grammar
+    - Studied and explored about compiler implementation process and provided design
+    
+Proposed plan - 
+1. Hari Siddarth Velaudampalayam Kesavan - Lexical Analyzer
+2. Mohan Vasantrao Yadav - Intermediate code generation
+3. Pratik Suryawanshi - Parse tree generator 
+4. RaamPrashanth Namakkal Sudhakar - Runtime Execution
