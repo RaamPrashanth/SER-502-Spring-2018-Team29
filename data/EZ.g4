@@ -2,7 +2,7 @@ grammar EZ;
 
 program : statement_list;
 statement_list : statement (spaceChar)*  statement_list
-| statement;
+| statement(spaceChar)*;
 
 statement : decl_statement
 | assign_statement
