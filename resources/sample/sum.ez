@@ -1,0 +1,7 @@
+variable x;
+variable y;
+variable sum;
+x = 5;
+y = 6;
+sum = x + y;
+write sum;
