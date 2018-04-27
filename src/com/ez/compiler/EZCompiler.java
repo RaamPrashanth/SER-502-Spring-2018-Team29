@@ -11,9 +11,6 @@ import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
-/*import com.ez.compiler.EZLexer;
-import com.ez.compiler.EZParser;*/
-
 /**
  * 
  * @author Team 29
@@ -25,13 +22,14 @@ public class EZCompiler {
 	static EZParser parser = null;
 	public static void main(String[] args) {
 		
-		//TODO
-		//String fileName = args[0];
-		//Boolean displayParseTree = "-ignoreParseTree".equals(args[1])? false : true;
+		String filename = "resources/sample/sum.ez";
+		if (args.length > 0){
+    			filename = args[0];
+		}
 		
 		CharStream charStream = null;
 		try {
-			charStream = CharStreams.fromFileName("resources/sample/sum.ez");
+			charStream = CharStreams.fromFileName(filename);
 		} catch (IOException e) {
 			System.out.println("ex");
 			e.printStackTrace();
@@ -43,7 +41,7 @@ public class EZCompiler {
 		parser = new EZParser(tokenStream);
 		ParseTreeWalker.DEFAULT.walk(EZIntermediateCodeGenarator.getInstance(), parser.program());
 		ArrayList<String> intermediateCode =  EZIntermediateCodeGenarator.getInstance().getintermediateCode();
-		writeIntermediateFile("resources/sample/sum.ez", intermediateCode);
+		writeIntermediateFile(filename, intermediateCode);
 
 		System.out.println("\n parse tree " + parser.program().toStringTree(parser));
 		

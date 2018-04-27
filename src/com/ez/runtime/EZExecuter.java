@@ -28,9 +28,9 @@ public class EZExecuter {
 	
 	public static void main(String[] args) {
 		String filename = "resources/sample/sum.ezi";
-	   /* 	if (args.length > 0){
+		if (args.length > 0){
 	    		filename = args[0];
-	    	}*/
+	    	}
 		
 		try {
 			for (String line : Files.readAllLines(Paths.get(filename))) {

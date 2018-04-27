@@ -1,0 +1,3 @@
+Main-Class: com.ez.runtime.EZExecuter
+Class-Path: lib/antlr-4.7.1-complete.jar
+
