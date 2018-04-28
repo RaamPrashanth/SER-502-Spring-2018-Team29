@@ -15,6 +15,7 @@ public class EZIntermediateCodeGenarator extends EZBaseListener  {
 	private static ArrayList<String> intermediateCode;
 	private static int nestCount = 1;
 	private static Stack<Integer> nestedStack = new Stack<Integer>(); 
+	private static Stack<String> function = new Stack<String>();
 	
 	public static EZIntermediateCodeGenarator getInstance() {
 		if (INSTANCE == null) {
@@ -56,7 +57,13 @@ public class EZIntermediateCodeGenarator extends EZBaseListener  {
 
 	@Override 
 	public void enterDecl_statement(EZParser.Decl_statementContext ctx) { 
-		intermediateCode.add(EZConstants.DECLARE + ctx.identifier().getText());
+		if (function.isEmpty()) {
+			intermediateCode.add(EZConstants.DECLARE + ctx.identifier().getText());
+		} else {
+			String accm = function.pop();
+			function.push(accm);
+			intermediateCode.add(EZConstants.DECLARE + accm + ctx.identifier().getText());
+		}
 	}
 
 	@Override 
@@ -70,12 +77,24 @@ public class EZIntermediateCodeGenarator extends EZBaseListener  {
 
 	@Override 
 	public void exitAssign_statement(EZParser.Assign_statementContext ctx) {
-		intermediateCode.add(EZConstants.ASSIGN + ctx.identifier().getText());
+		if (function.isEmpty()) {
+			intermediateCode.add(EZConstants.ASSIGN + ctx.identifier().getText());
+		} else {
+			String accm = function.pop();
+			function.push(accm);
+			intermediateCode.add(EZConstants.ASSIGN + accm + ctx.identifier().getText());
+		}
 	}
 
 	@Override 
 	public void enterRead_statement(EZParser.Read_statementContext ctx) {
-		intermediateCode.add(EZConstants.READ + ctx.identifier().getText());
+		if (function.isEmpty()) {
+			intermediateCode.add(EZConstants.READ + ctx.identifier().getText());
+		} else {
+			String accm = function.pop();
+			function.push(accm);
+			intermediateCode.add(EZConstants.ASSIGN + accm + ctx.identifier().getText());
+		}
 	}
 
 	@Override
@@ -150,21 +169,26 @@ public class EZIntermediateCodeGenarator extends EZBaseListener  {
 		if (ctx.number() != null) {
 			intermediateCode.add(EZConstants.PUSH + ctx.number().getText());
 		} else if (ctx.identifier() != null) {
-			intermediateCode.add(EZConstants.LOAD + ctx.identifier().getText());
+			if (function.isEmpty()) {
+				intermediateCode.add(EZConstants.LOAD + ctx.identifier().getText());
+			} else {
+				String accm = function.pop();
+				function.push(accm);
+				intermediateCode.add(EZConstants.LOAD + accm + ctx.identifier().getText());
+			}
 		}
 	}
 
 	@Override public void exitExp1(EZParser.Exp1Context ctx) { 
-		//if (ctx.exp1() == null) {
-			if (ctx.getText().contains("*")) {
-				intermediateCode.add(EZConstants.MUL);
-			} else if (ctx.getText().contains("%")) {
-				intermediateCode.add(EZConstants.REM);
-			} else if (ctx.getText().contains("/")) {
-				intermediateCode.add(EZConstants.DIV);
-			}
-		//}
+		if (ctx.getText().contains("*")) {
+			intermediateCode.add(EZConstants.MUL);
+		} else if (ctx.getText().contains("%")) {
+			intermediateCode.add(EZConstants.REM);
+		} else if (ctx.getText().contains("/")) {
+			intermediateCode.add(EZConstants.DIV);
+		}
 	}
+	
 	/**
 	 * {@inheritDoc}
 	 *
@@ -208,15 +232,6 @@ public class EZIntermediateCodeGenarator extends EZBaseListener  {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void enterIdentifier(EZParser.IdentifierContext ctx) { 
-		System.out.println("\n EZCompiler" + ctx.getText() + " " + ctx.getParent().toStringTree(EZCompiler.getParserInstance()) + " "
-				+ ctx.getParent().getParent().toStringTree(EZCompiler.getParserInstance()));
-		//intermediateCode.add(EZConstants.LOAD + EZConstants.SPACE + ctx.getText());
-		/*
-		String temp = intermediateCode.get(intermediateCode.size()-1);
-		intermediateCode.remove(intermediateCode.size()-1);
-		temp = temp + ctx.getText();
-		intermediateCode.add(temp);
-		*/
 	}
 	/**
 	 * {@inheritDoc}
@@ -268,10 +283,6 @@ public class EZIntermediateCodeGenarator extends EZBaseListener  {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void enterNumber(EZParser.NumberContext ctx) { 
-		/*String temp = intermediateCode.get(intermediateCode.size()-1);
-		intermediateCode.remove(intermediateCode.size()-1);
-		temp = temp + ctx.getText();
-		intermediateCode.add(temp);*/
 	}
 	/**
 	 * {@inheritDoc}
@@ -336,15 +347,27 @@ public class EZIntermediateCodeGenarator extends EZBaseListener  {
 	@Override public void visitTerminal(TerminalNode node) { }
 
 	@Override public void enterFunction_statement(EZParser.Function_statementContext ctx) { 
-		intermediateCode.add(EZConstants.FUNC_DECL.trim() + "_" + ctx.identifier().getText());
+		if (ctx.identifier() != null) {
+			function.push("#"+ctx.identifier(0).getText());
+			intermediateCode.add(EZConstants.FUNC_DECL.trim() + "_" + ctx.identifier(0).getText());
+			String func = "";
+			func = EZConstants.FUNC_PARAM.trim();
+			for (int i = ctx.identifier().size()-1; i > 0; i--) {
+				func = func + " #" +ctx.identifier(0).getText() + ctx.identifier(1).getText();
+			}
+			intermediateCode.add(func);
+		}
 	}
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFunction_statement(EZParser.Function_statementContext ctx) { 
-		intermediateCode.add(EZConstants.FUNC_END.trim() + "_" + ctx.identifier().getText());
+	@Override public void exitFunction_statement(EZParser.Function_statementContext ctx) {
+		if (ctx.identifier(0) != null) {
+			intermediateCode.add(EZConstants.FUNC_END.trim() + "_" + ctx.identifier(0).getText());
+			function.pop();
+		}
 	}
 	/**
 	 * {@inheritDoc}
@@ -354,7 +377,25 @@ public class EZIntermediateCodeGenarator extends EZBaseListener  {
 	@Override public void enterFunction_call_statement(EZParser.Function_call_statementContext ctx) { }
 
 	@Override public void exitFunction_call_statement(EZParser.Function_call_statementContext ctx) { 
+		if (ctx.identifier(1) != null) {
+			if (function.isEmpty()) {
+				intermediateCode.add(EZConstants.LOAD + ctx.identifier(1).getText());
+			} else {
+				String accm = function.pop();
+				function.push(accm);
+				intermediateCode.add(EZConstants.LOAD + accm + ctx.identifier(1).getText());
+			}
+			
+			//intermediateCode.add(EZConstants.FUNC_CALL_WPARAM.trim() + "_" + ctx.identifier(0).getText() + "_" + ctx.identifier(1).getText()) ;
+		} 
 		intermediateCode.add(EZConstants.FUNC_CALL.trim() + "_" + ctx.identifier(0).getText());
+	}
+	
+	@Override public void exitReturn_statement(EZParser.Return_statementContext ctx) { 
+		/*String accm = function.pop();
+		function.push(accm);
+		intermediateCode.add(EZConstants.FUNC_RETURN.trim() + "_" + accm.substring(1, accm.length()));*/
+		intermediateCode.add(EZConstants.FUNC_RETURN);
 	}
 	
 	/**
