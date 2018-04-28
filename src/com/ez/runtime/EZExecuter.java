@@ -25,6 +25,9 @@ public class EZExecuter {
 	static int iteratorIndex = 0;
 	static Stack<Integer> nestedStack = new Stack<Integer>();
 	static Stack<Boolean> isLoop = new Stack<Boolean>();
+	static Stack<Integer> stackTrace = new Stack<Integer>();
+	static Stack<Integer> scope = new Stack<Integer>();
+	static int scopeCount = 1;
 	
 	public static void main(String[] args) {
 		String filename = "resources/sample/sum.ezi";
@@ -74,16 +77,28 @@ public class EZExecuter {
 				intStack.push(accm);
 				break;
 			case EZConstants.ASSIGN :
-				variables.put(split[1], intStack.pop());
+				if (scope.isEmpty()) {
+					variables.put(split[1], intStack.pop());
+				} else {
+					variables.put(getScope() + split[1], intStack.pop());
+				}
 				break;
 			case EZConstants.BOOL:
 				boolStack.push(Boolean.parseBoolean(split[1]));
 				break;
 			case EZConstants.DECLARE:
-				if (!variables.containsKey(split[1])) {
-					variables.put(split[1], 0);
+				if (scope.isEmpty()) {
+					if (!variables.containsKey(split[1])) {
+						variables.put(split[1], 0);
+					} else {
+						throwException("Exception variable " + split[1] + " already declared");
+					}
 				} else {
-					throwException("Exception variable " + split[1] + " already declared");
+					if (!variables.containsKey(getScope() + split[1])) {
+						variables.put(getScope() + split[1], 0);
+					} else {
+						throwException("Exception variable " + split[1] + " already declared in this scope");
+					}
 				}
 				break;
 			case EZConstants.DIV:
@@ -147,10 +162,18 @@ public class EZExecuter {
 				}
 				break;
 			case EZConstants.LOAD:
-				if (variables.containsKey(split[1])) {
-					intStack.push(variables.get(split[1]));
+				if (scope.isEmpty()) {
+					if (variables.containsKey(split[1])) {
+						intStack.push(variables.get(split[1]));
+					} else {
+						throwException("Undeclared variable" + split[1] + " is used.");
+					}
 				} else {
-					throwException("Undeclared variable" + split[1] + " is used.");
+					if (variables.containsKey(getScope() + split[1])) {
+						intStack.push(variables.get(getScope() + split[1]));
+					} else {
+						throwException("Undeclared variable" + split[1] + " is used.");
+					}
 				}
 				break;
 			case EZConstants.LOOP:
@@ -160,6 +183,11 @@ public class EZExecuter {
 				intStack.push((intStack.pop() * intStack.pop()));
 				break;
 			case EZConstants.NOT_EQUAL:
+				if (intStack.pop() != intStack.pop()) {
+					boolStack.push(true);
+				} else {
+					boolStack.push(false);
+				}
 				break;
 			case EZConstants.PUSH:
 				intStack.push(Integer.parseInt(split[1]));
@@ -167,7 +195,11 @@ public class EZExecuter {
 			case EZConstants.READ:
 				Scanner sc = new Scanner(System.in);
 				int temp = sc.nextInt();
-				variables.put(split[1], temp);
+				if (scope.isEmpty()) {
+					variables.put(split[1], temp);
+				} else {
+					variables.put(getScope() + split[1], temp);
+				}
 				break;
 			case EZConstants.REM:
 				accm = intStack.pop();
@@ -197,14 +229,29 @@ public class EZExecuter {
 				}
 				break;
 			case EZConstants.FUNC_CALL :
+				stackTrace.push(iteratorIndex);
 				jumpToFunction(EZConstants.FUNC_DECL.trim() + "_" + split[1]);
 				break;
 			case EZConstants.FUNC_END :
-				jumpToFunction(EZConstants.FUNC_CALL.trim() + "_" + split[1]);
+				//jumpToFunction(EZConstants.FUNC_CALL.trim() + "_" + split[1]);
+				scope.pop();
+				iteratorIndex = stackTrace.pop();
 				break;
 			case EZConstants.FUNC_DECL :
 				jumpForward(EZConstants.FUNC_END.trim() + "_" + split[1]);
 				break;
+			case EZConstants.FUNC_PARAM :
+				scope.push(scopeCount);
+				scopeCount++;
+				for (int i = split.length-1; i > 0; i--) {
+					variables.put(getScope() + split[i], intStack.pop());	
+				}
+				break;
+			case EZConstants.FUNC_RETURN:
+				scope.pop();
+				iteratorIndex = stackTrace.pop();
+				break;
+				
 			default:
 		}
 	}
@@ -241,10 +288,17 @@ public class EZExecuter {
 	public static void jumpToFunction(String label) {
 		for (int i = 0; i < codeList.size(); i++) {
 			String code = codeList.get(i);
-			if (code.equals(label.trim())) {
+			if (code.contains(label.trim())) {
 				iteratorIndex = i;
 				break;
 			} 
 		}
 	}
+	
+	public static int getScope() {
+		int temp = scope.pop();
+		scope.push(temp);
+		return temp;
+	}
+	
 }
