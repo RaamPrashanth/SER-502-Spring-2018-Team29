@@ -1,6 +1,5 @@
 package com.ez.compiler;
 
-// Generated from ../data/EZ.g4 by ANTLR 4.7.1
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
@@ -113,6 +112,18 @@ public class EZBaseListener implements EZListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterElse_statement(EZParser.Else_statementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitElse_statement(EZParser.Else_statementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterLoop_statement(EZParser.Loop_statementContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -125,13 +136,25 @@ public class EZBaseListener implements EZListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterComment_statement(EZParser.Comment_statementContext ctx) { }
+	@Override public void enterFunction_statement(EZParser.Function_statementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitComment_statement(EZParser.Comment_statementContext ctx) { }
+	@Override public void exitFunction_statement(EZParser.Function_statementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterFunction_call_statement(EZParser.Function_call_statementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFunction_call_statement(EZParser.Function_call_statementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -281,13 +304,13 @@ public class EZBaseListener implements EZListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSpaceChar(EZParser.SpaceCharContext ctx) { }
+	@Override public void enterRpara(EZParser.RparaContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSpaceChar(EZParser.SpaceCharContext ctx) { }
+	@Override public void exitRpara(EZParser.RparaContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

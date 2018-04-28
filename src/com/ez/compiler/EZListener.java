@@ -1,6 +1,5 @@
 package com.ez.compiler;
 
-// Generated from ../data/EZ.g4 by ANTLR 4.7.1
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -89,6 +88,16 @@ public interface EZListener extends ParseTreeListener {
 	 */
 	void exitIf_statement(EZParser.If_statementContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link EZParser#else_statement}.
+	 * @param ctx the parse tree
+	 */
+	void enterElse_statement(EZParser.Else_statementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link EZParser#else_statement}.
+	 * @param ctx the parse tree
+	 */
+	void exitElse_statement(EZParser.Else_statementContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link EZParser#loop_statement}.
 	 * @param ctx the parse tree
 	 */
@@ -99,15 +108,25 @@ public interface EZListener extends ParseTreeListener {
 	 */
 	void exitLoop_statement(EZParser.Loop_statementContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link EZParser#comment_statement}.
+	 * Enter a parse tree produced by {@link EZParser#function_statement}.
 	 * @param ctx the parse tree
 	 */
-	void enterComment_statement(EZParser.Comment_statementContext ctx);
+	void enterFunction_statement(EZParser.Function_statementContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link EZParser#comment_statement}.
+	 * Exit a parse tree produced by {@link EZParser#function_statement}.
 	 * @param ctx the parse tree
 	 */
-	void exitComment_statement(EZParser.Comment_statementContext ctx);
+	void exitFunction_statement(EZParser.Function_statementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link EZParser#function_call_statement}.
+	 * @param ctx the parse tree
+	 */
+	void enterFunction_call_statement(EZParser.Function_call_statementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link EZParser#function_call_statement}.
+	 * @param ctx the parse tree
+	 */
+	void exitFunction_call_statement(EZParser.Function_call_statementContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link EZParser#expression}.
 	 * @param ctx the parse tree
@@ -229,13 +248,13 @@ public interface EZListener extends ParseTreeListener {
 	 */
 	void exitUpperChar(EZParser.UpperCharContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link EZParser#spaceChar}.
+	 * Enter a parse tree produced by {@link EZParser#rpara}.
 	 * @param ctx the parse tree
 	 */
-	void enterSpaceChar(EZParser.SpaceCharContext ctx);
+	void enterRpara(EZParser.RparaContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link EZParser#spaceChar}.
+	 * Exit a parse tree produced by {@link EZParser#rpara}.
 	 * @param ctx the parse tree
 	 */
-	void exitSpaceChar(EZParser.SpaceCharContext ctx);
+	void exitRpara(EZParser.RparaContext ctx);
 }
