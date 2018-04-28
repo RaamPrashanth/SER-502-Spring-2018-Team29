@@ -93,7 +93,7 @@ public class EZIntermediateCodeGenarator extends EZBaseListener  {
 		} else {
 			String accm = function.pop();
 			function.push(accm);
-			intermediateCode.add(EZConstants.ASSIGN + accm + ctx.identifier().getText());
+			intermediateCode.add(EZConstants.READ + accm + ctx.identifier().getText());
 		}
 	}
 
