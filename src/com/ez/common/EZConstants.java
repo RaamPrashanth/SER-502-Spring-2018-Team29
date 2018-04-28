@@ -29,5 +29,7 @@ public class EZConstants {
 	public static final String FUNC_CALL = "FUNC CALL ";
 	public static final String FUNC_DECL = "FUNC DECL ";
 	public static final String FUNC_END = "FUNC END ";
-	public static final String FUNC_CALL_WPARAM = "FUNC CALL WPARAM "; 
+	//public static final String FUNC_CALL_WPARAM = "FUNC CALL WPARAM "; 
+	public static final String FUNC_RETURN = "RETURN ";
+	public static final String FUNC_PARAM = "FUNC_PARAM ";
 }

@@ -1,3 +1,5 @@
+// Generated from ../data/EZ.g4 by ANTLR 4.7.1
+
 package com.ez.compiler;
 
 import org.antlr.v4.runtime.tree.ParseTreeListener;
@@ -117,6 +119,16 @@ public interface EZListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitFunction_statement(EZParser.Function_statementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link EZParser#return_statement}.
+	 * @param ctx the parse tree
+	 */
+	void enterReturn_statement(EZParser.Return_statementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link EZParser#return_statement}.
+	 * @param ctx the parse tree
+	 */
+	void exitReturn_statement(EZParser.Return_statementContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link EZParser#function_call_statement}.
 	 * @param ctx the parse tree
@@ -247,14 +259,4 @@ public interface EZListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitUpperChar(EZParser.UpperCharContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link EZParser#rpara}.
-	 * @param ctx the parse tree
-	 */
-	void enterRpara(EZParser.RparaContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link EZParser#rpara}.
-	 * @param ctx the parse tree
-	 */
-	void exitRpara(EZParser.RparaContext ctx);
 }

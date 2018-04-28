@@ -1,3 +1,5 @@
+// Generated from ../data/EZ.g4 by ANTLR 4.7.1
+
 package com.ez.compiler;
 
 
@@ -143,6 +145,18 @@ public class EZBaseListener implements EZListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitFunction_statement(EZParser.Function_statementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterReturn_statement(EZParser.Return_statementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitReturn_statement(EZParser.Return_statementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -299,18 +313,6 @@ public class EZBaseListener implements EZListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitUpperChar(EZParser.UpperCharContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterRpara(EZParser.RparaContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitRpara(EZParser.RparaContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
