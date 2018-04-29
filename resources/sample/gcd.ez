@@ -1,0 +1,25 @@
+/# Program to compute GCD  using recursion #/
+variable x;
+variable y;
+variable z;
+write "X";
+read x;
+write "Y";
+read y;
+z=gcd(x,y);
+function gcd(x,y)
+{
+variable m;
+if(y!=0)
+then 
+{
+
+m=gcd(y,x%y);
+}
+else
+{
+write "GCD";
+write x;
+}
+return m;
+}

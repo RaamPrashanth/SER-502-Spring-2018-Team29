@@ -1,9 +1,11 @@
-
+/# Program to compute Fibonacci series using recursion #/
 variable n;
+write "N"; 
 read n;
 variable m;
 
 m=fibonacci(n);
+write "Fibonacci";
 write m;
 function fibonacci(n)
 {

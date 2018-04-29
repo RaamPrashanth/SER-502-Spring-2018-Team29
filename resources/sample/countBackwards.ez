@@ -1,5 +1,7 @@
+/# Program to compute count backwards series using recursion #/
 variable n;
-read n;
+write "N";
+read n;	
 countBackwards(n);
 function countBackwards(n)
 {
@@ -8,6 +10,7 @@ then
 { 
 variable a;
 a=n-1;
+write "Count";
 write n;
 countBackwards(a);
 }

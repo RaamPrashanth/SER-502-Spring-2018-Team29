@@ -1,9 +1,10 @@
+/# Program to compute Factorial using recursion #/
 variable x;
-
+write "X";
 read x;
 
 x = factorial(x);
-
+write "Factorial";
 write x;
 
 function factorial(x) {
