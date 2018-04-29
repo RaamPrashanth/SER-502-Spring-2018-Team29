@@ -35,7 +35,7 @@ java -jar compiler.jar resources/sample/factorial.ez
 java -jar compiler.jar resources/sample/factorial.ezi
 ```
 ```
-If the jars don't run in your system, you can build using ./build.sh command.
+If the jars don't run in your system, you can build using sh build.sh command.
 ```
 
 # Highlights
