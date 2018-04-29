@@ -40,7 +40,7 @@ public class EZExecuter {
 				codeList.add(line);
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			System.out.println("File not found...Please specify valid input file");
 			e.printStackTrace();
 		}
 		

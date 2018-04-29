@@ -53,7 +53,13 @@ factor : identifier
 | function_call_statement ;
 
 
-cond_expression : expression cond_operators expression | bool_val;
+cond_expression : expression cond_operators expression
+| bool_val;
+
+boolean_expression : cond_expression boolean_operations boolean_expression
+| cond_expression
+
+
 cond_operators :  '=='
 | '<'
 | '>'

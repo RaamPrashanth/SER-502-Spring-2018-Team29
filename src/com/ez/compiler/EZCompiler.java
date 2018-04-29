@@ -42,8 +42,6 @@ public class EZCompiler {
 		ParseTreeWalker.DEFAULT.walk(EZIntermediateCodeGenarator.getInstance(), parser.program());
 		ArrayList<String> intermediateCode =  EZIntermediateCodeGenarator.getInstance().getintermediateCode();
 		writeIntermediateFile(filename, intermediateCode);
-
-		System.out.println("\n parse tree " + parser.program().toStringTree(parser));
 		
 		//TODO GUI to display parse tree
 	}
@@ -56,7 +54,7 @@ public class EZCompiler {
 		try {
 			PrintWriter writer = new PrintWriter(fileName + "i", "UTF-8");
 			for (String i:intermediateCode){
-				System.out.println(i);
+				//System.out.println(i);
 				writer.println(i);
 			}
 			writer.close();
