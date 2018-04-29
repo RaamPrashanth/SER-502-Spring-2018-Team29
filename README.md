@@ -44,4 +44,4 @@ We allow users to input values using read command and also write to the console.
 **Grammar Changes** <br>
 GRAMMAR IS STILL THE SAME. <br>
 We have made some structural changes to the grammar to make it compatible with ANTLR. However, the logic remains the same. <br>
-We have also added some functionalities like supporting function blocks, function call, return statements, write strings.
+We have also added some functionalities like supporting function blocks, function call, return statements, write strings to the grammar.
