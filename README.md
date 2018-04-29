@@ -1,4 +1,4 @@
-# SER-502
+# SER-502 - EZ Language
 
 ## Team 29
 **Team Members**
