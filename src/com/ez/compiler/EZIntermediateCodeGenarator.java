@@ -172,7 +172,7 @@ public class EZIntermediateCodeGenarator extends EZBaseListener  {
 	@Override public void enterExp1(EZParser.Exp1Context ctx) {
 		if (ctx.number() != null) {
 			intermediateCode.add(EZConstants.PUSH + ctx.number().getText());
-		} else if (ctx.identifier() != null) {
+		} else if (ctx.identifier() != null ) {
 			if (function.isEmpty()) {
 				intermediateCode.add(EZConstants.LOAD + ctx.identifier().getText());
 			} else {
@@ -356,8 +356,8 @@ public class EZIntermediateCodeGenarator extends EZBaseListener  {
 			intermediateCode.add(EZConstants.FUNC_DECL.trim() + "_" + ctx.identifier(0).getText());
 			String func = "";
 			func = EZConstants.FUNC_PARAM.trim();
-			for (int i = ctx.identifier().size()-1; i > 0; i--) {
-				func = func + " #" +ctx.identifier(0).getText() + ctx.identifier(1).getText();
+			for (int i = 1; i < ctx.identifier().size(); i++) {
+				func = func + " #" +ctx.identifier(0).getText() + ctx.identifier(i).getText();
 			}
 			intermediateCode.add(func);
 		}
@@ -381,18 +381,18 @@ public class EZIntermediateCodeGenarator extends EZBaseListener  {
 	@Override public void enterFunction_call_statement(EZParser.Function_call_statementContext ctx) { }
 
 	@Override public void exitFunction_call_statement(EZParser.Function_call_statementContext ctx) { 
-		if (ctx.identifier(1) != null) {
+		/*if (ctx.identifier() != null) {
 			if (function.isEmpty()) {
-				intermediateCode.add(EZConstants.LOAD + ctx.identifier(1).getText());
+				intermediateCode.add(EZConstants.LOAD + ctx.identifier().getText());
 			} else {
 				String accm = function.pop();
 				function.push(accm);
-				intermediateCode.add(EZConstants.LOAD + accm + ctx.identifier(1).getText());
+				intermediateCode.add(EZConstants.LOAD + accm + ctx.identifier().getText());
 			}
 			
 			//intermediateCode.add(EZConstants.FUNC_CALL_WPARAM.trim() + "_" + ctx.identifier(0).getText() + "_" + ctx.identifier(1).getText()) ;
-		} 
-		intermediateCode.add(EZConstants.FUNC_CALL.trim() + "_" + ctx.identifier(0).getText());
+		} */
+		intermediateCode.add(EZConstants.FUNC_CALL.trim() + "_" + ctx.identifier().getText());
 	}
 	
 	@Override public void exitReturn_statement(EZParser.Return_statementContext ctx) { 
