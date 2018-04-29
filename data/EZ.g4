@@ -23,7 +23,8 @@ assign_statement : identifier '=' expression ';';
 
 read_statement : 'read' identifier ';';
 
-write_statement : 'write' expression ';';
+write_statement : 'write' expression ';'
+| 'write' '"'(.)*?'";';
 
 if_statement : 'if' '(' cond_expression ')' 'then' '{' statement_list RPARA else_statement?;
 

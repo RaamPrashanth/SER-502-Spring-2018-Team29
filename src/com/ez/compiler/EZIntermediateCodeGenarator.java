@@ -107,8 +107,12 @@ public class EZIntermediateCodeGenarator extends EZBaseListener  {
 	}
 	
 	@Override 
-	public void exitWrite_statement(EZParser.Write_statementContext ctx) { 
-		intermediateCode.add(EZConstants.WRITE);
+	public void exitWrite_statement(EZParser.Write_statementContext ctx) {
+		if (ctx.expression() != null) {
+			intermediateCode.add(EZConstants.WRITE);
+		} else {
+			intermediateCode.add(EZConstants.WRITE_STRING  + ctx.getText().substring(6, ctx.getText().trim().length()-2));
+		}
 	}
 
 	@Override public void enterIf_statement(EZParser.If_statementContext ctx) {

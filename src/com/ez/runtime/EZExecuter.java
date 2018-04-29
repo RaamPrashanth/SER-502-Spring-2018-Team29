@@ -215,6 +215,9 @@ public class EZExecuter {
 			case EZConstants.WRITE:
 				System.out.println("\n" + intStack.pop());
 				break;
+			case EZConstants.WRITE_STRING :
+				System.out.println(split[1]);
+				break;
 			case EZConstants.COND_END:
 				if (isLoop.pop()) {
 					if (!boolStack.pop()) {
