@@ -1,0 +1,17 @@
+
+function evenOrOdd(x){
+
+variable test;
+test = x % 2;
+
+    if(test== 0)then{
+        write 1;
+    }else {
+        write 0;
+    }
+}
+
+variable num;
+read num;
+evenOrOdd(num);
+

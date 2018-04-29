@@ -1,0 +1,27 @@
+variable prev;
+variable next;
+variable num;
+variable temp;
+prev = 0;
+next = 1;
+
+/# read input from user#/
+read num;
+
+if(num > 0) then{
+write prev;
+num = num - 1;
+}
+
+if(num > 0) then{
+write next;
+num = num - 1;
+}
+
+repeat_when(num > 0){
+temp = prev + next;
+write temp;
+prev = next;
+next = temp;
+num = num - 1;
+}

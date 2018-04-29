@@ -1,0 +1,26 @@
+/# program to get highest in 3 numbers #/
+
+
+variable num1;
+variable num2;
+variable num3;
+
+read num1;
+read num2;
+read num3;
+
+if(num1 > num2)then{
+    if(num1 > num3)then{
+        write num1;
+    }else{
+        write num3;
+    }
+    
+}else{
+    if(num2 > num3)then{
+        write num2;
+    }else{
+        write num3;
+    }
+}
+

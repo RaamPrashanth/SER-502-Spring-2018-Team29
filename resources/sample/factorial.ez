@@ -1,0 +1,21 @@
+/# program to print factorial of number #/
+
+function factorial(x){
+    
+    variable temp;
+    
+    temp = 1;
+    
+    repeat_when(x > 0){
+        temp = temp * x;
+        x = x - 1;    
+    }
+    
+    write temp;
+    
+}
+
+variable num;
+read num;
+factorial(num);
+

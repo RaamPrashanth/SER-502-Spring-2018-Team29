@@ -1,0 +1,19 @@
+/# check if number is prime ; print 1 if prime else 0#/
+
+variable num;
+read num;
+
+variable i;
+i = 2;
+variable flag;
+
+flag = 1;
+
+repeat_when(2 * i < num){
+    if(num % i == 0)then{
+        flag = 0;
+    }
+    i = i + 1;
+}
+
+write flag;
