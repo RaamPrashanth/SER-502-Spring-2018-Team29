@@ -204,6 +204,7 @@ public class EZExecuter {
 			case EZConstants.REM:
 				accm = intStack.pop();
 				accm = intStack.pop() % accm;
+				intStack.push(accm);
 				break;
 			case EZConstants.SPACE:
 				break;
