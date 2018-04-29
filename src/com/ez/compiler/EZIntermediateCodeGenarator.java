@@ -381,17 +381,6 @@ public class EZIntermediateCodeGenarator extends EZBaseListener  {
 	@Override public void enterFunction_call_statement(EZParser.Function_call_statementContext ctx) { }
 
 	@Override public void exitFunction_call_statement(EZParser.Function_call_statementContext ctx) { 
-		/*if (ctx.identifier() != null) {
-			if (function.isEmpty()) {
-				intermediateCode.add(EZConstants.LOAD + ctx.identifier().getText());
-			} else {
-				String accm = function.pop();
-				function.push(accm);
-				intermediateCode.add(EZConstants.LOAD + accm + ctx.identifier().getText());
-			}
-			
-			//intermediateCode.add(EZConstants.FUNC_CALL_WPARAM.trim() + "_" + ctx.identifier(0).getText() + "_" + ctx.identifier(1).getText()) ;
-		} */
 		intermediateCode.add(EZConstants.FUNC_CALL.trim() + "_" + ctx.identifier().getText());
 	}
 	
