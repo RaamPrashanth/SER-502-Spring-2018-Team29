@@ -7,6 +7,8 @@
 3. Mohan Vasantrao Yadav
 4. Pratik Suryawanshi
 
+A demo of the project can be found [here](https://youtu.be/x1RiYHtVbXc)
+  
 **Platform**
 ```
 MacOS
@@ -32,6 +34,9 @@ Example
 java -jar compiler.jar resources/sample/factorial.ez
 java -jar compiler.jar resources/sample/factorial.ezi
 ```
+```
+If the jars don't run in your system, you can build using ./build.sh command.
+```
 
 # Highlights
 The EZ language supports the use of `functions` with `multiple parameters` and `recursive calls`. Parameters can be expressions. Function calls are also handled inside expressions. <br>
@@ -45,3 +50,9 @@ We allow users to input values using read command and also write to the console.
 GRAMMAR IS STILL THE SAME. <br>
 We have made some structural changes to the grammar to make it compatible with ANTLR. However, the logic remains the same. <br>
 We have also added some functionalities like supporting function blocks, function call, return statements, write strings to the grammar.
+
+**Future Scope** <br>
+We are planning to add:
+1. Lists.
+2. Multiple Datatypes. We will handle integer, float and other types of numbers using the "variable" itself and use some other keyword like "String" to support strings.
+3. Datastructures.
