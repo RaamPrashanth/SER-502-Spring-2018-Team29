@@ -32,11 +32,11 @@ else_statement : 'else' '{' statement_list RPARA;
 
 loop_statement : 'repeat_when' '(' cond_expression ')' '{' statement_list RPARA;
 
-function_statement : 'function' identifier '('(identifier)?')' '{' statement_list (return_statement)? RPARA;
+function_statement : 'function' identifier '('(identifier | (identifier (',' identifier)*))?')' '{' statement_list (return_statement)? RPARA;
 
 return_statement :'return' (expression)';';
 
-function_call_statement : identifier '('(identifier|number)?')';
+function_call_statement : identifier '('(expression | (expression (',' expression)*))?')' ;
 
 expression : exp1 '+' expression |
 exp1 '-' expression |

@@ -213,7 +213,7 @@ public class EZExecuter {
 				intStack.push(accm);
 				break;
 			case EZConstants.WRITE:
-				System.out.println("\n" + intStack.pop());
+				System.out.println(intStack.pop());
 				break;
 			case EZConstants.WRITE_STRING :
 				System.out.println(split[1]);
