@@ -1,0 +1,4 @@
+/# Test case to check read and write functionality #/
+variable x;
+read x;
+write x;

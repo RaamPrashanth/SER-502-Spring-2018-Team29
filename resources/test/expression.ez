@@ -1,0 +1,22 @@
+/# Test case to check expressions #/
+variable x;
+x = 2*3;
+write x;
+
+x = x + 4;
+write x;
+
+x = x-2;
+write x;
+
+x = x%2;
+write x;
+
+x = x + 10;
+write x;
+
+x=x/2;
+write x;
+
+x = 2*3-4+5/7%2;
+write x;

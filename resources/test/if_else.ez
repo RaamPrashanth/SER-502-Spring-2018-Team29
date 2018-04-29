@@ -1,0 +1,11 @@
+/# Test case to check if and else #/
+variable x;
+variable y;
+read x;
+read y;
+if (x > y) then {
+	write x;
+	}
+else {
+	write y;
+	}
