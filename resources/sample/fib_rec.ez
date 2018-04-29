@@ -1,0 +1,24 @@
+
+variable n;
+read n;
+variable m;
+
+m=fibonacci(n);
+write m;
+function fibonacci(n)
+{
+variable ret;
+if(n<=2)
+then {
+ret=1;
+}
+else
+{
+variable a;
+variable b;
+a=n-1;
+b=n-2;
+ret=fibonacci(a)+fibonacci(b);
+}
+return ret;
+}

@@ -1,0 +1,23 @@
+variable x;
+
+read x;
+
+x = factorial(x);
+
+write x;
+
+function factorial(x) {
+
+	if (x > 1) then {
+
+    variable y;
+
+    y = x - 1;
+
+    x = x * factorial(y);
+
+    } 
+
+    return x;
+
+}

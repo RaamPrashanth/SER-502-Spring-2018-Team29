@@ -1,0 +1,14 @@
+variable n;
+read n;
+countBackwards(n);
+function countBackwards(n)
+{
+if(n>0)
+then 
+{ 
+variable a;
+a=n-1;
+write n;
+countBackwards(a);
+}
+}
