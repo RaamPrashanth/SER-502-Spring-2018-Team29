@@ -6,7 +6,7 @@ package com.ez.compiler;
 
 program : statement_list;
 statement_list : statement statement_list
-| statement;
+| ;
 
 statement : decl_statement
 | assign_statement

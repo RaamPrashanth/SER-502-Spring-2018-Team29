@@ -186,8 +186,39 @@ public class EZParser extends Parser {
 		try {
 			setState(56);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,0,_ctx) ) {
-			case 1:
+			switch (_input.LA(1)) {
+			case T__1:
+			case T__3:
+			case T__4:
+			case T__5:
+			case T__11:
+			case T__12:
+			case T__38:
+			case T__39:
+			case T__40:
+			case T__41:
+			case T__42:
+			case T__43:
+			case T__44:
+			case T__45:
+			case T__46:
+			case T__47:
+			case T__48:
+			case T__49:
+			case T__50:
+			case T__51:
+			case T__52:
+			case T__53:
+			case T__54:
+			case T__55:
+			case T__56:
+			case T__57:
+			case T__58:
+			case T__59:
+			case T__60:
+			case T__61:
+			case T__62:
+			case T__63:
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(52);
@@ -196,13 +227,15 @@ public class EZParser extends Parser {
 				statement_list();
 				}
 				break;
-			case 2:
+			case EOF:
+			case T__13:
+			case RPARA:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(55);
-				statement();
 				}
 				break;
+			default:
+				throw new NoViableAltException(this);
 			}
 		}
 		catch (RecognitionException re) {
@@ -1888,7 +1921,7 @@ public class EZParser extends Parser {
 		"\32\u0083\3\2\2\2\34\u0094\3\2\2\2\36\u00bd\3\2\2\2 \u00c4\3\2\2\2\"\u00c6"+
 		"\3\2\2\2$\u00c8\3\2\2\2&\u00d3\3\2\2\2(\u00d7\3\2\2\2*\u00d9\3\2\2\2,"+
 		"\u00dc\3\2\2\2.\u00e3\3\2\2\2\60\u00e5\3\2\2\2\62\u00e7\3\2\2\2\64\65"+
-		"\5\4\3\2\65\3\3\2\2\2\66\67\5\6\4\2\678\5\4\3\28;\3\2\2\29;\5\6\4\2:\66"+
+		"\5\4\3\2\65\3\3\2\2\2\66\67\5\6\4\2\678\5\4\3\28;\3\2\2\29;\3\2\2\2:\66"+
 		"\3\2\2\2:9\3\2\2\2;\5\3\2\2\2<G\5\b\5\2=G\5\n\6\2>G\5\f\7\2?G\5\16\b\2"+
 		"@G\5\20\t\2AG\5\24\13\2BC\5\32\16\2CD\7\3\2\2DG\3\2\2\2EG\5\26\f\2F<\3"+
 		"\2\2\2F=\3\2\2\2F>\3\2\2\2F?\3\2\2\2F@\3\2\2\2FA\3\2\2\2FB\3\2\2\2FE\3"+
