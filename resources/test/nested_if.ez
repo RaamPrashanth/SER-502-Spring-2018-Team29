@@ -1,0 +1,29 @@
+/# Test case to check nested conditions #/
+variable x;
+read x;
+write x;
+
+if(x>1) then {
+	write x;
+	if(x>2) then {
+		write x;
+		if(x>3) then {
+			write x;
+		}
+		else {
+			variable t;
+			t=10;
+			write t;
+			}
+		}
+	else {
+		variable t;
+		t=9;
+		write t;
+		}
+	}
+else{
+	variable t;
+	t=8;
+	write t;
+}

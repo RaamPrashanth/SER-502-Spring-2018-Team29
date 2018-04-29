@@ -1,0 +1,12 @@
+/# Test case to check nested loops #/
+variable x;
+read x;
+
+repeat_when (x>0) {
+	write x;
+	repeat_when (x>5) {
+		write x;
+		x = x - 1;
+	}
+	x = x - 1;
+}

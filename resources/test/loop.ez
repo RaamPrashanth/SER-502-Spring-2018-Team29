@@ -1,0 +1,7 @@
+/# Test case to check loop #/
+variable x;
+read x;
+repeat_when ( x > 0 ) {
+	write x;
+	x = x - 1;
+	}

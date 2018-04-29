@@ -1,0 +1,18 @@
+/# Test case to check nested loop and conditions #/
+variable x;
+variable y;
+read x;
+y = 0;
+
+repeat_when (x > 0) {
+	if (x > 5) then {
+		repeat_when (y < 3) {
+			write y;
+			y = y + 1;
+		}
+	}
+	else {
+		write x;
+	}
+	x = x - 1;
+}
