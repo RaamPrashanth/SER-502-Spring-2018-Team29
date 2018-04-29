@@ -30,10 +30,18 @@ public class EZExecuter {
 	static int scopeCount = 1;
 	
 	public static void main(String[] args) {
-		String filename = "resources/sample/sum.ezi";
+		String filename = "";
 		if (args.length > 0){
 	    		filename = args[0];
-	    	}
+	    	} else {
+			System.out.println("input filename can't be empty");
+			return;
+		}
+			
+		if (!filename.contains(".ezi")) {
+			System.out.println("Enter a valid .ezi file");
+			return;
+		}
 		
 		try {
 			for (String line : Files.readAllLines(Paths.get(filename))) {

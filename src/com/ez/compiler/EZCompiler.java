@@ -22,9 +22,17 @@ public class EZCompiler {
 	static EZParser parser = null;
 	public static void main(String[] args) {
 		
-		String filename = "resources/sample/sum.ez";
+		String filename = "";
 		if (args.length > 0){
     			filename = args[0];
+		} else {
+			System.out.println("input filename can't be empty");
+			return;
+		}
+		
+		if (!filename.contains(".ez")) {
+			System.out.println("Enter a valid .ez file");
+			return;
 		}
 		
 		CharStream charStream = null;

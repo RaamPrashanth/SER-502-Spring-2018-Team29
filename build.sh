@@ -1,6 +1,6 @@
 #!/bin/sh
 
-SCRIPT_PATH=$(readlink"$0")
+SCRIPT_PATH=""
 ROOT_PATH=$(dirname "$SCRIPT_PATH")
 
 LIB_PATH="$ROOT_PATH/lib"

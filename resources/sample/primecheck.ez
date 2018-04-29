@@ -6,10 +6,9 @@ read num;
 variable i;
 i = 2;
 variable flag;
-
 flag = 1;
 
-repeat_when(2 * i < num){
+repeat_when(i <= num/2){
     if(num % i == 0)then{
         flag = 0;
     }

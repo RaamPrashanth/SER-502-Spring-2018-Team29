@@ -130,16 +130,16 @@ public class EZIntermediateCodeGenarator extends EZBaseListener  {
 	@Override public void exitCond_expression(EZParser.Cond_expressionContext ctx) {
 		if (ctx.getText().contains("==")) {
 			intermediateCode.add(EZConstants.EQUAL);
-		} else if (ctx.getText().contains("<")) {
-			intermediateCode.add(EZConstants.LESS_THAN);
-		} else if (ctx.getText().contains(">")) {
-			intermediateCode.add(EZConstants.GREATER_THAN);
 		} else if (ctx.getText().contains("<=")) {
 			intermediateCode.add(EZConstants.LESS_EQUAL);
 		} else if (ctx.getText().contains(">=")) {
 			intermediateCode.add(EZConstants.GREAT_EQUAL);
 		} else if (ctx.getText().contains("!=")) {
 			intermediateCode.add(EZConstants.NOT_EQUAL);
+		} else if (ctx.getText().contains("<")) {
+			intermediateCode.add(EZConstants.LESS_THAN);
+		} else if (ctx.getText().contains(">")) {
+			intermediateCode.add(EZConstants.GREATER_THAN);
 		}
 		intermediateCode.add(EZConstants.COND_END);
 	}
