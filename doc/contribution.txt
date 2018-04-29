@@ -38,6 +38,63 @@ Week 2 (Mar 31 - Apr 6)
     
 Proposed plan - 
 1. Hari Siddarth Velaudampalayam Kesavan - Lexical Analyzer
-2. Mohan Vasantrao Yadav - Intermediate code generation
-3. Pratik Suryawanshi - Parse tree generator 
+2. Mohan Vasantrao Yadav - Parse tree generator 
+3. Pratik Suryawanshi - Intermediate code generation
 4. RaamPrashanth Namakkal Sudhakar - Runtime Execution
+
+Week 3 (Apr 7 - Apr 14)
+1. Hari Siddarth Velaudampalayam Kesavan
+    - Studied about ANTLR tool
+    - Created Lexical Analyser skeleton
+    - Wrote unit test cases to test grammar
+    - Wrote Sample programs
+2. Mohan Vasantrao Yadav
+    - Studied about ANTLR tool
+    - Created Parser Skeleton
+    - Wrote sample programs
+    - verified sample programs with the grammar
+3. Pratik Suryawanshi
+    - Studied about intermediate code generation
+    - Tried generating intermediate code for simple programs
+4. RaamPrashanth Namakkal Sudhakar
+    - Studied about runtime execution
+    - Handled runtime for simple programs
+    - Helped team with executing compiler
+    
+Week 4 (Apr 15 - Apr 22)
+1. Hari Siddarth Velaudampalayam Kesavan
+    - Made changes to grammar structure to make it compatible with ANTLR
+    - Changed lexer skeleton to match our grammar
+2. Mohan Vasantrao Yadav
+    - Made changes to grammar structure to make it compatible with ANTLR
+    - Explored the generated parse trees and fixed bugs in grammar.
+3. Pratik Suryawanshi
+    - Developed intermediate code generator
+    - Wrote sample programs
+    - verified generated intermediate code with the parse tree
+4. RaamPrashanth Namakkal Sudhakar
+    - Developed basic runtime structure
+    - Wrote unit test cases to test the runtime code
+    
+Week 5 (Apr 23 - Apr 29)
+1. Hari Siddarth Velaudampalayam Kesavan
+    - Changed grammar to match additional functionalities
+    - Wrote test cases and worked on regressive testing of code
+    - Started working on the presentation activities - PPT, Video, Documentation
+    - Bug fixes
+2. Mohan Vasantrao Yadav
+    - Wrote test cases and worked on regressive testing of code
+    - Updated parser to handle additional functionalities
+    - Started working on the presentation activities - PPT, Video, Documentation
+    - Bug fixes
+3. Pratik Suryawanshi
+    - Wrote sample programs to check the working of the compiler
+    - Updated intermediate code generator to handle additional functionalities
+    - Worked on testing the project
+    - Started working on the presentation activities - PPT, Video, Documentation
+    - Bug fixes
+4. RaamPrashanth Namakkal Sudhakar
+    - Updated runtime to handle additional functionalities
+    - Tested the project regressively
+    - Started working on the presentation activities - PPT, Video, Documentation
+    - Bug fixes
