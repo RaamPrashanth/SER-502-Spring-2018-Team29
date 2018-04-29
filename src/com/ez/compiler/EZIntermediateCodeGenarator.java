@@ -153,14 +153,9 @@ public class EZIntermediateCodeGenarator extends EZBaseListener  {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExpression(EZParser.ExpressionContext ctx) { 
+	/*@Override public void enterExpression(EZParser.ExpressionContext ctx) { 
 
 	}
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void exitExpression(EZParser.ExpressionContext ctx) { 
 		if (ctx.getText().contains("+")) {
 			intermediateCode.add(EZConstants.ADD);
@@ -170,7 +165,7 @@ public class EZIntermediateCodeGenarator extends EZBaseListener  {
 	}
 
 	@Override public void enterExp1(EZParser.Exp1Context ctx) {
-		if (ctx.number() != null) {
+		/*if (ctx.number() != null) {
 			intermediateCode.add(EZConstants.PUSH + ctx.number().getText());
 		} else if (ctx.identifier() != null ) {
 			if (function.isEmpty()) {
@@ -184,12 +179,71 @@ public class EZIntermediateCodeGenarator extends EZBaseListener  {
 	}
 
 	@Override public void exitExp1(EZParser.Exp1Context ctx) { 
-		if (ctx.getText().contains("*")) {
-			intermediateCode.add(EZConstants.MUL);
-		} else if (ctx.getText().contains("%")) {
-			intermediateCode.add(EZConstants.REM);
-		} else if (ctx.getText().contains("/")) {
-			intermediateCode.add(EZConstants.DIV);
+			if (ctx.getText().contains("*")) {
+				intermediateCode.add(EZConstants.MUL);
+			} else if (ctx.getText().contains("%")) {
+				System.out.println("\n ctx" + ctx.getText());
+				intermediateCode.add(EZConstants.REM);
+			} else if (ctx.getText().contains("/")) {
+				intermediateCode.add(EZConstants.DIV);
+			}
+	}*/
+	
+	@Override public void enterAddition(EZParser.AdditionContext ctx) { }
+
+	@Override public void exitAddition(EZParser.AdditionContext ctx) { 
+		intermediateCode.add(EZConstants.ADD);
+	}
+
+	@Override public void enterSubtraction(EZParser.SubtractionContext ctx) { }
+
+	@Override public void exitSubtraction(EZParser.SubtractionContext ctx) { 
+		intermediateCode.add(EZConstants.SUB);
+	}
+
+	@Override public void enterExpPrecedence(EZParser.ExpPrecedenceContext ctx) { }
+
+	@Override public void exitExpPrecedence(EZParser.ExpPrecedenceContext ctx) { }
+
+	@Override public void enterMultiplication(EZParser.MultiplicationContext ctx) { }
+
+	@Override public void exitMultiplication(EZParser.MultiplicationContext ctx) {
+		intermediateCode.add(EZConstants.MUL);
+	}
+
+	@Override public void enterDivision(EZParser.DivisionContext ctx) { }
+
+	@Override public void exitDivision(EZParser.DivisionContext ctx) { 
+		intermediateCode.add(EZConstants.DIV);
+	}
+
+	@Override public void enterMod(EZParser.ModContext ctx) { }
+
+	@Override public void exitMod(EZParser.ModContext ctx) { 
+		intermediateCode.add(EZConstants.REM);
+	}
+
+	@Override public void enterFact(EZParser.FactContext ctx) { 
+	}
+
+	@Override public void exitFact(EZParser.FactContext ctx) { }
+
+	@Override public void enterFactor(EZParser.FactorContext ctx) { 
+	}
+
+	@Override public void exitFactor(EZParser.FactorContext ctx) { 
+		if (ctx.function_call_statement()  == null) {
+			if (ctx.number() != null) {
+				intermediateCode.add(EZConstants.PUSH + ctx.number().getText());
+			} else if (ctx.identifier() != null ) {
+				if (function.isEmpty()) {
+					intermediateCode.add(EZConstants.LOAD + ctx.identifier().getText());
+				} else {
+					String accm = function.pop();
+					function.push(accm);
+					intermediateCode.add(EZConstants.LOAD + accm + ctx.identifier().getText());
+				}
+			}
 		}
 	}
 	

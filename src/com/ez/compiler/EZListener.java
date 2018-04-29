@@ -140,25 +140,99 @@ public interface EZListener extends ParseTreeListener {
 	 */
 	void exitFunction_call_statement(EZParser.Function_call_statementContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link EZParser#expression}.
+	 * Enter a parse tree produced by the {@code addition}
+	 * labeled alternative in {@link EZParser#expression}.
 	 * @param ctx the parse tree
 	 */
-	void enterExpression(EZParser.ExpressionContext ctx);
+	void enterAddition(EZParser.AdditionContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link EZParser#expression}.
+	 * Exit a parse tree produced by the {@code addition}
+	 * labeled alternative in {@link EZParser#expression}.
 	 * @param ctx the parse tree
 	 */
-	void exitExpression(EZParser.ExpressionContext ctx);
+	void exitAddition(EZParser.AdditionContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link EZParser#exp1}.
+	 * Enter a parse tree produced by the {@code subtraction}
+	 * labeled alternative in {@link EZParser#expression}.
 	 * @param ctx the parse tree
 	 */
-	void enterExp1(EZParser.Exp1Context ctx);
+	void enterSubtraction(EZParser.SubtractionContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link EZParser#exp1}.
+	 * Exit a parse tree produced by the {@code subtraction}
+	 * labeled alternative in {@link EZParser#expression}.
 	 * @param ctx the parse tree
 	 */
-	void exitExp1(EZParser.Exp1Context ctx);
+	void exitSubtraction(EZParser.SubtractionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code expPrecedence}
+	 * labeled alternative in {@link EZParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpPrecedence(EZParser.ExpPrecedenceContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code expPrecedence}
+	 * labeled alternative in {@link EZParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpPrecedence(EZParser.ExpPrecedenceContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code multiplication}
+	 * labeled alternative in {@link EZParser#exp1}.
+	 * @param ctx the parse tree
+	 */
+	void enterMultiplication(EZParser.MultiplicationContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code multiplication}
+	 * labeled alternative in {@link EZParser#exp1}.
+	 * @param ctx the parse tree
+	 */
+	void exitMultiplication(EZParser.MultiplicationContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code division}
+	 * labeled alternative in {@link EZParser#exp1}.
+	 * @param ctx the parse tree
+	 */
+	void enterDivision(EZParser.DivisionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code division}
+	 * labeled alternative in {@link EZParser#exp1}.
+	 * @param ctx the parse tree
+	 */
+	void exitDivision(EZParser.DivisionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code mod}
+	 * labeled alternative in {@link EZParser#exp1}.
+	 * @param ctx the parse tree
+	 */
+	void enterMod(EZParser.ModContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code mod}
+	 * labeled alternative in {@link EZParser#exp1}.
+	 * @param ctx the parse tree
+	 */
+	void exitMod(EZParser.ModContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code fact}
+	 * labeled alternative in {@link EZParser#exp1}.
+	 * @param ctx the parse tree
+	 */
+	void enterFact(EZParser.FactContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code fact}
+	 * labeled alternative in {@link EZParser#exp1}.
+	 * @param ctx the parse tree
+	 */
+	void exitFact(EZParser.FactContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link EZParser#factor}.
+	 * @param ctx the parse tree
+	 */
+	void enterFactor(EZParser.FactorContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link EZParser#factor}.
+	 * @param ctx the parse tree
+	 */
+	void exitFactor(EZParser.FactorContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link EZParser#cond_expression}.
 	 * @param ctx the parse tree

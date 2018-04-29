@@ -38,22 +38,19 @@ return_statement :'return' (expression)';';
 
 function_call_statement : identifier '('(expression | (expression (',' expression)*))?')' ;
 
-expression : exp1 '+' expression |
-exp1 '-' expression |
-exp1;
+expression : exp1 '+' expression  #addition |
+exp1 '-' expression #subtraction |
+exp1 #expPrecedence;
 
-exp1 : identifier '*'  exp1
-| number '*' exp1
-| identifier '/' exp1
-| number '/' exp1
-| identifier '%' exp1
-| number '%' exp1
-| identifier
+exp1 : factor '*' exp1 #multiplication
+| factor '/' exp1 #division
+| factor '%' exp1 #mod
+| factor #fact ;
+
+
+factor : identifier
 | number
-| function_call_statement '*' exp1
-| function_call_statement '/' exp1
-| function_call_statement '%' exp1
-| function_call_statement;
+| function_call_statement ;
 
 
 cond_expression : expression cond_operators expression | bool_val;
